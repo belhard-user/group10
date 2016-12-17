@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Smart;
+require "vendor/autoload.php";
+use Acme\Foo;
 
+foo();
+bar();
 
-use Errors\Exception;
+new User();
+new UserRepository();
+new Git();
 
-require "t.php";
+new \Acme\User\Foo();
 
-class MyClass extends Exception {}
+$names = [
+    'boss' => 'Morpheus',
+    'the one' => 'Neo'
+];
 
-
-\Errors\bar();
-
-echo \Errors\TEST;
+dump([1, 2, 3, 4], new Foo(), $names);

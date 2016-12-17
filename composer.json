@@ -1,0 +1,17 @@
+{
+  "autoload":{
+    "files": [
+      "function/helper.php",
+      "function/helper2.php"
+    ],
+    "classmap": [
+      "classes/"
+    ],
+    "psr-4":{
+      "Acme\\": "src"
+    }
+  },
+  "require": {
+    "symfony/var-dumper": "^3.2"
+  }
+}
