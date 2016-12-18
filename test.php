@@ -19,18 +19,34 @@ try {
          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
      ]);
 
-     // $sql = "DELETE FROM test WHERE id IN (1, 3, 5)";
-     // $result = $pdo->exec($sql);
+    $sql = "INSERT INTO test (name, email) VALUE(?, ?)";
 
-    $result = $pdo->query('SELECT * FROM test');
+    $stmt = $pdo->prepare($sql);
 
-    foreach ($result->fetchAll() as $item){
-        echo $item->email . '<hr>';
-    }
+    $name = 'Trinity';
+    $email = 'c@c.com';
 
-     /*while($item = $result->fetch(PDO::FETCH_OBJ)){
-         dump($item);
-     }*/
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $email);
+
+    $stmt->execute();
+    /*$stmt->execute([
+        'Tank',
+        'b@b.com'
+    ]);*/
+
+    /*$stmt = $pdo->prepare($sql);
+    $name = 'Trinity';
+    $email = 'c@c.com';
+
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();*/
+
+    /*$stmt->execute([
+        'name' => 'Morpheus',
+        'email' => 'b@b.com'
+    ]);*/
 
 }catch(PDOException $e){
     echo $e->getMessage();
