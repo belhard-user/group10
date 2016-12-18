@@ -1,5 +1,7 @@
 <?php
 
+namespace Core\Database;
+
 class QueryBuilder
 {
     /** @var  mysqli */
@@ -30,6 +32,7 @@ class QueryBuilder
 
         return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
+
     public function update($table, array $data, array $where)
     {
 

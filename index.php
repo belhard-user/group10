@@ -1,5 +1,5 @@
 <?php
 require_once "core/bootstrap.php";
 
-Router::load('routers')
+\Core\Router::load('routers')
     ->run();

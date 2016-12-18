@@ -1,9 +1,11 @@
 <?php
 
+namespace Controllers;
+
 class PageController
 {
 
-    public function index()
+    public function home()
     {
         $title = 'Главная';
         $pageTitle = 'Главная';
