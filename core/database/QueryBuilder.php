@@ -23,14 +23,14 @@ class QueryBuilder
             "'" . implode("', '", $data) . "'"
         );
 
-        return $this->db->query($sql);
+        return $this->db->exec($sql);
     }
 
     public function selectAll($table)
     {
         $sql = "SELECT * FROM $table";
 
-        return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
+        return $this->db->query($sql)->fetchAll();
     }
 
     public function update($table, array $data, array $where)

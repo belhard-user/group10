@@ -23,12 +23,12 @@
         <input type="submit">
     <ul>
     <?php foreach($taskList as $task): ?>
-        <?php if($task['complete']): ?>
-            <li><s><?= $task['title'] ?></s></li>
+        <?php if($task->complete): ?>
+            <li><s><?= $task->title ?></s></li>
         <?php else: ?>
             <li>
                 <input type="checkbox" name="complete[]" value="">
-                <?= $task['title'] ?>
+                <?= $task->title ?>
             </li>
         <?php endif ?>
     <?php endforeach; ?>
