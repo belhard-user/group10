@@ -11,6 +11,7 @@ class TodoController
     public function index()
     {
         $taskList = App::get('query')->selectAll('todo');
+        $title = 'Список задач';
 
         include "views/todo.view.php";
     }
