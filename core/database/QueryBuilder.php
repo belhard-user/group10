@@ -20,10 +20,11 @@ class QueryBuilder
             "INSERT INTO %s (%s) VALUES (%s)",
             $table,
             implode(', ', $keys),
-            "'" . implode("', '", $data) . "'"
+            ":" . implode(", :", $keys)
         );
+        $stmt = $this->db->prepare($sql);
 
-        return $this->db->exec($sql);
+        return $stmt->execute($data);
     }
 
     public function selectAll($table)
@@ -33,8 +34,22 @@ class QueryBuilder
         return $this->db->query($sql)->fetchAll();
     }
 
-    public function update($table, array $data, array $where)
+    public function update($table, $setFields, $whereFields, $op='AND')
     {
+        $keys = array_keys($whereFields);
 
+        $set = implode(', ', array_map(function ($v, $k) {
+            return sprintf("%s='%s'", $k, $v);
+        }, array_values($setFields), array_keys($setFields)));
+
+        $sql = sprintf(
+            'UPDATE %s SET %s WHERE %s',
+            $table,
+            $set,
+            implode(" = ? $op ", $keys) . ' = ? '
+        );
+
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute(array_values($whereFields));
     }
 }

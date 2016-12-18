@@ -29,9 +29,10 @@ class TodoController
 
     public function update()
     {
-        $id = 1;
-        App::get('query')->update('todo', $_POST, [
-            'id' => $id
-        ]);
+        foreach ($_POST['complete'] as $id){
+            App::get('query')->update('todo', ['complete' => 1], ['id' => $id]);
+        }
+
+        Request::goBack();
     }
 }

@@ -27,7 +27,7 @@
             <li><s><?= $task->title ?></s></li>
         <?php else: ?>
             <li>
-                <input type="checkbox" name="complete[]" value="">
+                <input type="checkbox" name="complete[]" value="<?= $task->id ?>">
                 <?= $task->title ?>
             </li>
         <?php endif ?>
