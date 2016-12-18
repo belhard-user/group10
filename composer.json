@@ -1,14 +1,8 @@
 {
   "autoload":{
-    "files": [
-      "function/helper.php",
-      "function/helper2.php"
-    ],
-    "classmap": [
-      "classes/"
-    ],
-    "psr-4":{
-      "Acme\\": "src"
+    "psr-4": {
+      "Core\\": "core",
+      "Controllers\\": "controllers"
     }
   },
   "require": {

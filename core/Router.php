@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Router
 {
     protected $routers = [
@@ -35,13 +37,14 @@ class Router
             // return $this->routers[$url];
         }
 
-        throw new Exception('Page not Found');
+        throw new \Exception('Page not Found');
     }
 
 
     protected function callClass($url)
     {
         list($class, $method) = explode('@', $this->routers[Request::method()][$url]);
+        $class = '\\Controllers\\' . $class;
         $class = new $class;
         $class->$method();
     }

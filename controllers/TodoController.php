@@ -1,5 +1,10 @@
 <?php
 
+namespace Controllers;
+
+use Core\App;
+use Core\Request;
+
 class TodoController
 {
 
