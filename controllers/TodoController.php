@@ -18,7 +18,10 @@ class TodoController
 
     public function add()
     {
-        $title = $_POST['task'];
+        $re = '/(@(\w+))/ui';
+        $rep = '<a href="https://twitter.com/$2">$1</a>';
+
+        $title = preg_replace($re, $rep, $_POST['task']);
 
         App::get('query')->insert('todo', [
             'title' => $title,
